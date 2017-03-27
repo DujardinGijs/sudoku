@@ -1,0 +1,9 @@
+$.ajax({
+	url: "API/"+op,
+	data : {
+		a : nummer'
+		b : nummer'},
+	dataType: "json",
+	succes : function(data) {
+	nieuw = data.res}}
+})
