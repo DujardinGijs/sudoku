@@ -1,0 +1,122 @@
+@media only screen
+and (min-width: 320px)
+and (max-width: 568px) {
+    #container {
+        width: 70%;
+        height: 100%;
+    }
+    #container p {
+        width: 70%;
+    }
+    a {
+        display: block;
+    }
+    td {
+        height: 25px;
+    }
+    .next {
+        margin-left: 0;
+    }
+    #table3x3, #table3x2 {
+        margin-bottom: 20px;
+    }
+}
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    #container {
+        width: 70%;
+        height: 100%;
+    }
+    #container p {
+        width: 70%;
+    }
+    a {
+        display: block;
+    }
+    td {
+        height: 25px;
+    }
+    .next {
+        margin-left: 0;
+    }
+    #table3x3, #table3x2 {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    #container {
+        width: 70%;
+        height: 100%;
+    }
+    #container p {
+        width: 70%;
+    }
+    a {
+        display: block;
+    }
+    td {
+        height: 25px;
+    }
+    .next {
+        margin-left: 0;
+    }
+    #table3x3, #table3x2 {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
+    #container {
+        width: 70%;
+        height: 100%;
+    }
+    #container p {
+        width: 70%;
+    }
+    a {
+        display: block;
+    }
+    td {
+        height: 25px;
+    }
+    .next {
+        margin-left: 0;
+    }
+    #table3x3, #table3x2 {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen
+and (device-width: 360px)
+and (device-height: 640px)
+and (-webkit-device-pixel-ratio: 3) {
+    #container {
+        width: 70%;
+        height: 100%;
+    }
+    #container p {
+        width: 70%;
+    }
+    a {
+        display: block;
+    }
+    td {
+        height: 25px;
+    }
+    .next {
+        margin-left: 0;
+    }
+    #table3x3, #table3x2 {
+        margin-bottom: 20px;
+    }
+}
