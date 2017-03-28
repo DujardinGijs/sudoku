@@ -26,29 +26,31 @@ public class bridge extends HttpServlet {
 
         private static final String PREFIX ="/WebSudoku/API/";
         
-        private JsonObject compute(String a, String op, String b){
-        if( a == null || op == null || b == null ){
+        private JsonObject compute(String x, String y, String nr, String op){
+        if( x == null || y == null || nr == null || op == null){
                 return Json.createObjectBuilder()
                     .add("error","missing data")
-                    .add("a", ""+a)
+                    .add("x", ""+x)
+                    .add("y", ""+y)
+                    .add("nr", ""+nr)
                     .add("op", ""+op)
-                    .add("b", ""+b)
                     .build();
         
         } else {
-        int left = Integer.parseInt(a);
-        int right = Integer.parseInt(b);
-        return compute(left,op ,right);
+        int Xpos = Integer.parseInt(x);
+        int Ypos = Integer.parseInt(y);
+        int nummer = Integer.parseInt(nr);
+        return compute(Xpos,Ypos,nummer,op);
         }
         }
-    private JsonObject compute(int left, String op, int right){
-        int res = 0;
+    private JsonObject compute(int Xpos, int Ypos, int nummer, String op){
+        String res = "";
         switch (op){
-            case "jensIsGay":
-                res = 69;
+            case "input":
+                res = "chek";
                 break;
-            case "Salami":
-                res = 6969;
+            case "hint":
+                res = "output";
                 break;
             default:
                 return Json.createObjectBuilder()
@@ -59,9 +61,10 @@ public class bridge extends HttpServlet {
          
     return Json.createObjectBuilder()
             .add("msg","succes")
-            .add("a", left)
+            .add("x", Xpos)
+            .add("y",Ypos)
+            .add("nr",nummer)
             .add("op",op)
-            .add("b",right)
             .add("res",res)
             .build();
     };
@@ -80,10 +83,12 @@ public class bridge extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String operation = request.getRequestURI().substring(PREFIX.length());
-            String a = request.getParameter("a");
-            String b = request.getParameter("b");
+            String x = request.getParameter("x");
+            String y = request.getParameter("y");
+            String nr = request.getParameter("nr");
             
-            JsonObject json = compute(a, operation,b);
+            
+            JsonObject json = compute(x,y,nr,operation);
             out.println(json);
         }
     }
