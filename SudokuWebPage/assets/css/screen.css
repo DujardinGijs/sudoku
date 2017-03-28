@@ -1,10 +1,22 @@
+body {
+    background-image: url("../images/bg-sudoku.jpg");
+    background-size: cover;
+}
 #container {
     height: 100%;
-    width:1000px;
+    width:750px;
     border:solid black 2px;
     margin: 20px auto 0 auto;
     padding: 20px;
-
+    background-color: lightslategray;
+}
+nav {
+    width: 250px;
+    text-align: center;
+    margin:auto;
+}
+nav a {
+    display: block;
 }
 th, td {
     border: 1px solid black;
@@ -17,6 +29,7 @@ td {
     text-align: center;
     width: 150px;
     height: 40px;
+    vertical-align: middle;
 }
 .hide {
     display: none;
@@ -36,12 +49,12 @@ a:hover {
 }
 h1 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-size: 25px;
 
 }
 .next {
-    margin-left:84%;
+    margin-left:79%;
 }
 ul {
     margin-bottom: 20px;
@@ -53,7 +66,7 @@ ul li {
 }
 p {
     font-size: 14px;
-    margin-bottom:25px;
+    margin-bottom: 25px;
 }
 #counter {
     margin-bottom: 10px;

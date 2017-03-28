@@ -15,7 +15,7 @@ and (max-width: 568px) {
         margin-left: 0;
     }
     #table3x3, #table3x2 {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 }
 @media only screen
