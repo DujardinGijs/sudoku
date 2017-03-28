@@ -5,9 +5,6 @@ and (max-width: 568px) {
         width: 70%;
         height: 100%;
     }
-    #container p {
-        width: 70%;
-    }
     a {
         display: block;
     }
