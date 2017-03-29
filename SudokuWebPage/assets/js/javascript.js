@@ -25,7 +25,7 @@ var count = function () {
 var getName = function () {
     var user = $("#userName").val();
     $("#users").append(user);
-}
+};
 
 $(document).ready(function () {
     $(".counter").on('click', tel);
