@@ -10,6 +10,7 @@ var tel = function (e) {
 };
 
 var count = function () {
+
     time++;
     var min = parseInt(time / 60);
     var sec = time % 60;
@@ -20,6 +21,14 @@ var count = function () {
     $("#counter").append(result);
 };
 
+
+var getName = function () {
+    var user = $("#userName").val();
+    $("#users").append(user);
+}
+
 $(document).ready(function () {
     $(".counter").on('click', tel);
+    $("#sub").on('click',getName);
+
 });
