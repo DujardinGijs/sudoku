@@ -23,12 +23,15 @@ var count = function () {
 
 
 var getName = function () {
-    var user = $("#userName").val();
+    var cookie =  document.cookie;
+    var preset = "UserName=";
+    var user = cookie.slice(preset.length);
     $("#users").append(user);
 };
 
 $(document).ready(function () {
+    getName();
     $(".counter").on('click', tel);
-    $("#sub").on('click',getName);
+
 
 });

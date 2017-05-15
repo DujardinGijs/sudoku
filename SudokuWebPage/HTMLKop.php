@@ -7,17 +7,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/screen.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-
-<div id="container">
-    <h1>Info</h1>
-    <p>random tekst vo da ier ki op te vullen kejt</p>
-    <a href="index.php">Back</a>
-</div>
-
-
-<script type="text/javascript" src="assets/js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="assets/js/javascript.js"></script>
-</body>
-</html>
