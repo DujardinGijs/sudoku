@@ -29,8 +29,13 @@ var getName = function () {
     $("#users").append(user);
 };
 
+var setName = function () {
+    var user = document.getElementById("userName").value;
+    document.cookie = "UserName="+ user ;
+};
 $(document).ready(function () {
     getName();
+    $('#UserInput').on('submit',setName);
     $(".counter").on('click', tel);
 
 

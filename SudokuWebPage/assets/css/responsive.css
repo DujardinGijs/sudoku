@@ -3,10 +3,9 @@ and (min-width: 320px)
 and (max-width: 568px) {
     body {
         color: white;
-        background-image: none;
     }
     #container {
-        width:320px;
+        width: 70%;
         height: 568px;
     }
     a {
