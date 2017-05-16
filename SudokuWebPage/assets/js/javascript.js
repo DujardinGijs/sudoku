@@ -20,6 +20,12 @@ var count = function () {
     $("#counter").empty();
     $("#counter").append(result);
 };
+var voegIn = function () {
+        var geclickteClass = "." + $(this).closest('td').attr("class").slice(0,9); // or var clickedBtnID = this.id
+        alert(geclickteClass)
+
+
+};
 
 
 var getName = function () {
@@ -33,10 +39,11 @@ var setName = function () {
     var user = document.getElementById("userName").value;
     document.cookie = "UserName="+ user ;
 };
+
 $(document).ready(function () {
     getName();
     $('#UserInput').on('submit',setName);
     $(".counter").on('click', tel);
-
+    $(".counter, td").on('click', voegIn);
 
 });
