@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bridge;
+package bridge;
 
+import sudoku.Sudoku;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -22,40 +23,53 @@ import javax.servlet.http.HttpServletResponse;
  * @author Gijs
  */
 @WebServlet(name = "bridge", urlPatterns = {"/API/*"})
-public class bridge extends HttpServlet {
+public class Bridge extends HttpServlet {
 
         private static final String PREFIX ="/WebSudoku/API/";
         
-        private JsonObject compute(String x, String y, String nr, String op){
-        if( x == null || y == null || nr == null || op == null){
+        private JsonObject compute(String x, String y, String nr, String mode){
+        if( x == null || y == null || nr == null || mode == null){
                 return Json.createObjectBuilder()
                     .add("error","missing data")
                     .add("x", ""+x)
                     .add("y", ""+y)
                     .add("nr", ""+nr)
-                    .add("op", ""+op)
+                    .add("op", ""+mode)
                     .build();
         
         } else {
         int Xpos = Integer.parseInt(x);
         int Ypos = Integer.parseInt(y);
         int nummer = Integer.parseInt(nr);
-        return compute(Xpos,Ypos,nummer,op);
+        return compute(Xpos,Ypos,nummer,mode);
         }
         }
-    private JsonObject compute(int Xpos, int Ypos, int nummer, String op){
-        String res = "";
-        switch (op){
-            case "input":
-                res = "chek";
+        
+    private Sudoku theActualSudoku = new Sudoku();
+    private JsonObject compute(int Xpos, int Ypos, int nummer, String mode){
+        int res = 0;
+        switch (mode){
+            case "INPUT":
+                if (theActualSudoku.setNumber(Xpos, Ypos, nummer)> 0)
+                {
+                    res = theActualSudoku.setNumber(Xpos, Ypos, nummer);
+                }
+                else
+                {
+                    
+                    return Json.createObjectBuilder()
+                            .add("error", "Invalid Number")
+                            .add ("op", ""+mode)
+                            .build();
+                }
                 break;
-            case "hint":
-                res = "output";
+            case "HINT":
+                res = theActualSudoku.getHint();
                 break;
             default:
                 return Json.createObjectBuilder()
                         .add("error","unknown operation")
-                        .add("op" , ""+op)
+                        .add("mode" , ""+mode)
                         .build();
         }
          
@@ -64,7 +78,7 @@ public class bridge extends HttpServlet {
             .add("x", Xpos)
             .add("y",Ypos)
             .add("nr",nummer)
-            .add("op",op)
+            .add("mode",mode)
             .add("res",res)
             .build();
     };
@@ -82,13 +96,13 @@ public class bridge extends HttpServlet {
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String operation = request.getRequestURI().substring(PREFIX.length());
+            String mode = request.getRequestURI().substring(PREFIX.length());
             String x = request.getParameter("x");
             String y = request.getParameter("y");
             String nr = request.getParameter("nr");
             
             
-            JsonObject json = compute(x,y,nr,operation);
+            JsonObject json = compute(x,y,nr,mode);
             out.println(json);
         }
     }
