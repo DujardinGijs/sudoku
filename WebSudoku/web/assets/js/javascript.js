@@ -22,7 +22,9 @@ var count = function () {
 };
 var voegIn = function () {
         var geclickteClass = "." + $(this).closest('td').attr("class").slice(0,9); // or var clickedBtnID = this.id
-        alert(geclickteClass)
+        var x = geclickteClass.slice(7,8);
+        var y = geclickteClass.slice(9,10);
+        alert("x = "+x+" y ="+ y);
 
 
 };
