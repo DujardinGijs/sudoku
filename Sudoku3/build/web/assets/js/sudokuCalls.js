@@ -12,8 +12,11 @@ var getHint = function() {
             dataType: "json"
 
         }).done(function (data, textstatus, jqXHR) {
-            console.log(data)
-            
+            console.log(data);
+            var x = data.x;
+            var y = data.y;
+            var nr = data.nr;
+            console.log("x="+x+"y=" + y +"nr=" +nr);
            
         }).fail(function (jqXHR, textstatus, errorThrown) {
 
