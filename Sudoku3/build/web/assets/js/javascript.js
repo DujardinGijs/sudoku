@@ -3,7 +3,7 @@ var clicked = false;
 
 var tel = function (e) {
     e.preventDefault();
-    if(clicked == false) {
+    if(clicked === false) {
         i = window.setInterval(count, 1000);
         clicked = true;
     }
@@ -22,7 +22,7 @@ var count = function () {
 };
 var voegIn = function () {
         var geclickteClass = "." + $(this).closest('td').attr("class").slice(0,9); // or var clickedBtnID = this.id
-        alert(geclickteClass)
+        alert(geclickteClass);
 
 
 };
@@ -35,8 +35,8 @@ var getName = function () {
     $("#users").append(user);
 };
 
-var setName = function () {
-    var user = document.getElementById("userName").value;
+var setName = function (e) {
+    var user = $("#userName").val();
     document.cookie = "UserName="+ user ;
 };
 
