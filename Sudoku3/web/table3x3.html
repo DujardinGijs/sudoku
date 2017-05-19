@@ -6,18 +6,18 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/screen.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css"/>
-    
+
 </head>
 <body>
 <div id="container">
     <h1>3x3 Sudoku table</h1>
     <div id="users"></div>
-    <div id="counter">Time: </div>
-    <div id="check">
+    <div id="nav">
+        <div id="counter">Time:</div>
         <button type="button">Check</button>
-        <br/>
         <button type="button" class="hint">Hint</button>
     </div>
+
     <table id="table3x3" class="counter">
         <tr>
             <td>
@@ -81,7 +81,7 @@
         <tr>
             <td>
                 <table>
-                   <tr>
+                    <tr>
                         <td id="30"><p></p></td>
                         <td id="31"><p></p></td>
                         <td id="32"><p></p></td>
@@ -119,7 +119,7 @@
             </td>
             <td>
                 <table>
-                   <tr>
+                    <tr>
                         <td id="36"><p></p></td>
                         <td id="37"><p></p></td>
                         <td id="38"><p></p></td>
@@ -160,13 +160,13 @@
             <td>
                 <table>
                     <tr>
-                        <td id="63"><p></p></td>
-                        <td id="64"><p></p></td>
+                        <td id="63"><p>5</p></td>
+                        <td id="64"><p>7</p></td>
                         <td id="65"><p></p></td>
                     </tr>
                     <tr>
                         <td id="73"><p></p></td>
-                        <td id="74"><p></p></td>
+                        <td id="74"><p>3</p></td>
                         <td id="75"><p></p></td>
                     </tr>
                     <tr>
@@ -197,8 +197,19 @@
             </td>
         </tr>
     </table>
+    <div id="numbers">
+        <p id="button1">1</p>
+        <p id="button2">2</p>
+        <p id="button3">3</p>
+        <p id="button4">4</p>
+        <p id="button5">5</p>
+        <p id="button6">6</p>
+        <p id="button7">7</p>
+        <p id="button8">8</p>
+        <p id="button9">9</p>
+    </div>
     <footer id="footer3x3"><a href="mode.html">Back</a>
-    <a href="#" class="next">New puzzle</a></footer>
+        <a href="#" class="next">New puzzle</a></footer>
 
 </div>
 <script type="text/javascript" src="assets/js/jquery-3.1.0.min.js"></script>
