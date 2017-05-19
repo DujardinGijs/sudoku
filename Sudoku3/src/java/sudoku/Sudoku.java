@@ -14,12 +14,11 @@ public class Sudoku {
 
     public static void main(String[] args) {
         Sudoku s = new Sudoku();
-        s.print(s.getHint());
-
+ 
     }
 
     /*private int[][] solution = new int[9][9];*/
-    private int[][] solution
+    private final int[][] solution
             = {{2, 1, 5, 4, 3, 8, 9, 7, 6},
             {8, 4, 9, 1, 6, 7, 5, 3, 2},
             {6, 7, 3, 9, 5, 2, 4, 1, 8},
@@ -79,7 +78,7 @@ public class Sudoku {
     }
     
     
-    public int[] getHint()
+    public String[] getHint()
     {
         Random nr = new Random();
         int randomx = nr.nextInt(9) + 0;
@@ -89,19 +88,21 @@ public class Sudoku {
         {
             setNumber(randomx,randomy,solution[randomx][randomy]);
             sudokuState[randomx][randomy] = true;   
-            int[] hint = {solution[randomx][randomy], randomx, randomy};
+            String[] hint = {""+solution[randomx][randomy]+"",""+  randomx +"",""+ randomy + ""};
             return hint;
         }
         else 
         {
             if (isSolved(sudoku))
             {
-                return null;
+                String[] solved = {"Solved", "Solved", "Solved"};
+                return solved;
             }
             else
             {
-                return getHint();
+                return getHint();  
             }
+                 
                 
         }
         
@@ -182,29 +183,17 @@ public class Sudoku {
         return true;
     }
     
-    private void print(int[] hint)
-    {
-        System.out.println();
-        for (int i = 0; i < 3; i++)
-        {
-            System.out.println(" " + hint[i]);
-        }
-    }    
-
     private boolean isSolved(int[][] game) {
 
-        boolean solved = false;
+        boolean solved = true;
         
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {
-               if(sudokuState[x][y])
-               {
-                   solved = true;
-               }
-               else 
+               if(!sudokuState[x][y])
                {
                    solved = false;
                }
+               
             }
 
         }

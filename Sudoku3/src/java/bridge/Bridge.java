@@ -9,6 +9,8 @@ import sudoku.Sudoku;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
@@ -22,77 +24,52 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "bridge", urlPatterns = {"/API/*"})
 public class Bridge extends HttpServlet {
 
-        private JsonObject compute(String x, String y, String nr, String mode){
-        if ("HINT".equals(mode))
-        {
-            return compute(mode);
-            
-        }
-        else if( x == null || y == null || nr == null || mode == null){
-                return Json.createObjectBuilder()
-                    .add("error","missing data")
-                    .add("x", ""+x)
-                    .add("y", ""+y)
-                    .add("nr", ""+nr)
-                    .add("mode", ""+mode)
-                    .build();
+    
+        private Sudoku theActualSudoku = new Sudoku();
         
-        } else {
-            
-        int Xpos = Integer.parseInt(x);
-        int Ypos = Integer.parseInt(y);
-        int nummer = Integer.parseInt(nr);
-        return compute(Xpos,Ypos,nummer,mode);
-        }
-        
-        }
-        
-    private Sudoku theActualSudoku = new Sudoku();
-    private JsonObject compute(int Xpos, int Ypos, int nummer, String mode){
-        int res = 0;
-        switch (mode){
-            case "INPUT":
-                if (theActualSudoku.setNumber(Xpos, Ypos, nummer)> 0)
+        private JsonObject compute(String mode){
+
+            String[] hint = theActualSudoku.getHint();
+            if ( hint[0].equals("Solved"))
                 {
-                   res = theActualSudoku.setNumber(Xpos, Ypos, nummer);
-                }
-                else
-                {
-                    
                     return Json.createObjectBuilder()
-                            .add("error", "Invalid Number")
-                            .add ("mode", ""+mode)
+                            .add("msg","Error! Puzzle already solved!")
+                            .add("mode", "HINT")
                             .build();
                 }
-                break;
-            default:
-                return Json.createObjectBuilder()
-                        .add("error","unknown mode")
-                        .add("mode" , ""+mode)
-                        .build();
+        
+                    return Json.createObjectBuilder()
+                            .add("msg","Hint Added")
+                            .add("x",hint[1])
+                            .add("y",hint[2])
+                            .add("nr",hint[0])
+                            .add(mode,"HINT")
+                            .build();
+            
+        };
+       
+        private JsonObject compute(String coordx, String coordy)
+        {
+            int x = Integer.parseInt(coordx);
+            int y = Integer.parseInt(coordy);
+            
+            int number = theActualSudoku.getNumber(x, y);
+            
+            return Json.createObjectBuilder()
+                    .add("msg","Number gotten")
+                    .add("x", x)
+                    .add("y", y)
+                    .add("nr", number)
+                    .build();
+        };
+      
+        private JsonObject Invalid()
+        {
+            return Json.createObjectBuilder()
+                    .add("msg", "Error! Mode does not exist!")
+                    .build();
         }
-         
-    return Json.createObjectBuilder()
-            .add("msg","succes")
-            .add("x", Xpos)
-            .add("y",Ypos)
-            .add("nr",nummer)
-            .add("mode",mode)
-            .add("res",res)
-            .build();
-    };
-    
-    private JsonObject compute(String mode)
-    {
-        int[] res = theActualSudoku.getHint();
-        return Json.createObjectBuilder()
-            .add("msg","succes")
-            .add("x", res[1])
-            .add("y",res[2])
-            .add("nr",res[0])
-            .add("mode",mode)
-            .build();
-    };
+        
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -107,14 +84,34 @@ public class Bridge extends HttpServlet {
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String mode = request.getParameter("mode");
+            String mode = request.getParameter("mode");   
             String x = request.getParameter("x");
             String y = request.getParameter("y");
             String nr = request.getParameter("nr");
             
-            
-            JsonObject json = compute(x,y,nr,mode);
-            out.println(json);
+            switch (mode)
+                {
+                case ("HINT"):
+                    JsonObject jsonHint = compute(mode);
+                    out.println(jsonHint);
+                    break;
+                    
+                case ("GET"):
+                    JsonObject jsonGet = compute(x,y);
+                    out.println(jsonGet);
+                    break;
+                    
+                case ("SET"):
+                    JsonObject JsonSet = compute(mode);
+                    out.println(JsonSet);
+                    break;
+                    
+                default:
+                    JsonObject JsonInvalid = Invalid();
+                    out.println(JsonInvalid);
+                    break;
+                }
+
         }
     }
 
