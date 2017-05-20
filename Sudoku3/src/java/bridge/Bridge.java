@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -53,13 +53,44 @@ public class Bridge extends HttpServlet {
             int x = Integer.parseInt(coordx);
             int y = Integer.parseInt(coordy);
             
-            int number = theActualSudoku.getNumber(x, y);
+            int number = theActualSudoku.getNumberFromSudoku(x, y);
             
             return Json.createObjectBuilder()
                     .add("msg","Number gotten")
                     .add("x", x)
                     .add("y", y)
                     .add("nr", number)
+                    .build();
+        };
+        
+        private JsonObject compute(String coordx, String coordy, String number)
+        {
+            int x = Integer.parseInt(coordx);
+            int y = Integer.parseInt(coordy);
+            int nr = Integer.parseInt(number);
+            
+            int res = theActualSudoku.setNumber(x, y, nr);
+            
+            return Json.createObjectBuilder()
+                    .add("msg","Number gotten")
+                    .add("x", x)
+                    .add("y", y)
+                    .add("nr", res)
+                    .build();
+        };
+        
+        private JsonObject compute(String coordx, String coordy, int placeholder)
+        {
+            int x = Integer.parseInt(coordx);
+            int y = Integer.parseInt(coordy);
+            
+            int nr = theActualSudoku.getNumberFromSolution(x, y);
+            
+            return Json.createObjectBuilder()
+                    .add("msg","Number gotten")
+                    .add("x", x)
+                    .add("y", y)
+                    .add("nr", nr)
                     .build();
         };
       
@@ -89,6 +120,8 @@ public class Bridge extends HttpServlet {
             String y = request.getParameter("y");
             String nr = request.getParameter("nr");
             
+            int placeholder = 0;
+            
             switch (mode)
                 {
                 case ("HINT"):
@@ -102,8 +135,13 @@ public class Bridge extends HttpServlet {
                     break;
                     
                 case ("SET"):
-                    JsonObject JsonSet = compute(mode);
+                    JsonObject JsonSet = compute(x,y,nr);
                     out.println(JsonSet);
+                    break;
+                    
+                case ("CHECK"):
+                    JsonObject JsonCheck = compute(x,y,placeholder);
+                    out.println(JsonCheck);
                     break;
                     
                 default:

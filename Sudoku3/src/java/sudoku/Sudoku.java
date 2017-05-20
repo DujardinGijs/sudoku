@@ -57,6 +57,10 @@ public class Sudoku {
         {
             sudokuState[x][y] = true;
         }
+        else
+        {
+            sudokuState[x][y] = false;
+        }
         if (0 <= number && number <= 9)
         {
            sudoku[x][y] = number; 
@@ -68,8 +72,13 @@ public class Sudoku {
         }
     }
 
-    public int getNumber(int x, int y) {
+    public int getNumberFromSudoku(int x, int y) {
         return sudoku[x][y];
+    }
+    
+    public int getNumberFromSolution(int x, int y)
+    {
+        return solution[x][y];
     }
     
     public int[][] getSudoku()

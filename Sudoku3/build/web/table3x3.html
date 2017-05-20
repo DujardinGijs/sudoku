@@ -6,133 +6,74 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/screen.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css"/>
-    
+
 </head>
 <body>
 <div id="container">
     <h1>3x3 Sudoku table</h1>
     <div id="users"></div>
-    <div id="counter">Time: </div>
-    <div id="check">
-        <button type="button">Check</button>
-        <br/>
+    <div id="nav">
+        <div id="counter">Time:</div>
+        <button type="button" class="check">Check</button>
         <button type="button" class="hint">Hint</button>
     </div>
+
     <table id="table3x3" class="counter">
         <tr>
             <td>
                 <table>
                     <tr>
-                        <td id="00"><p></p></td>
-                        <td id="01"><p></p></td>
-                        <td id="02"><p></p></td>
+                        <td id="0è0"><p></p></td>
+                        <td id="0è1"><p></p></td>
+                        <td id="0è2"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="10"><p></p></td>
-                        <td id="11"><p></p></td>
-                        <td id="12"><p></p></td>
+                        <td id="1è0"><p></p></td>
+                        <td id="1è1"><p></p></td>
+                        <td id="1è2"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="20"><p></p></td>
-                        <td id="21"><p></p></td>
-                        <td id="22"><p></p></td>
+                        <td id="2è0"><p></p></td>
+                        <td id="2è1"><p></p></td>
+                        <td id="2è2"><p></p></td>
                     </tr>
                 </table>
             </td>
             <td>
                 <table>
                     <tr>
-                        <td id="03"><p></p></td>
-                        <td id="04"><p></p></td>
-                        <td id="05"><p></p></td>
+                        <td id="0è3"><p></p></td>
+                        <td id="0è4"><p></p></td>
+                        <td id="0è5"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="13"><p></p></td>
-                        <td id="14"><p></p></td>
-                        <td id="15"><p></p></td>
+                        <td id="1è3"><p></p></td>
+                        <td id="1è4"><p></p></td>
+                        <td id="1è5"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="23"><p></p></td>
-                        <td id="24"><p></p></td>
-                        <td id="25"><p></p></td>
+                        <td id="2è3"><p></p></td>
+                        <td id="2è4"><p></p></td>
+                        <td id="2è5"><p></p></td>
                     </tr>
                 </table>
             </td>
             <td>
                 <table>
                     <tr>
-                        <td id="06"><p></p></td>
-                        <td id="07"><p></p></td>
-                        <td id="08"><p></p></td>
+                        <td id="0è6"><p></p></td>
+                        <td id="0è7"><p></p></td>
+                        <td id="0è8"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="16"><p></p></td>
-                        <td id="17"><p></p></td>
-                        <td id="18"><p></p></td>
+                        <td id="1è6"><p></p></td>
+                        <td id="1è7"><p></p></td>
+                        <td id="1è8"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="26"><p></p></td>
-                        <td id="27"><p></p></td>
-                        <td id="28"><p></p></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table>
-                   <tr>
-                        <td id="30"><p></p></td>
-                        <td id="31"><p></p></td>
-                        <td id="32"><p></p></td>
-                    </tr>
-                    <tr>
-                        <td id="40"><p></p></td>
-                        <td id="41"><p></p></td>
-                        <td id="42"><p></p></td>
-                    </tr>
-                    <tr>
-                        <td id="50"><p></p></td>
-                        <td id="51"><p></p></td>
-                        <td id="52"><p></p></td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <tr>
-                        <td id="33"><p></p></td>
-                        <td id="34"><p></p></td>
-                        <td id="35"><p></p></td>
-                    </tr>
-                    <tr>
-                        <td id="43"><p></p></td>
-                        <td id="44"><p></p></td>
-                        <td id="45"><p></p></td>
-                    </tr>
-                    <tr>
-                        <td id="53"><p></p></td>
-                        <td id="54"><p></p></td>
-                        <td id="55"><p></p></td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table>
-                   <tr>
-                        <td id="36"><p></p></td>
-                        <td id="37"><p></p></td>
-                        <td id="38"><p></p></td>
-                    </tr>
-                    <tr>
-                        <td id="46"><p></p></td>
-                        <td id="47"><p></p></td>
-                        <td id="48"><p></p></td>
-                    </tr>
-                    <tr>
-                        <td id="56"><p></p></td>
-                        <td id="57"><p></p></td>
-                        <td id="58"><p></p></td>
+                        <td id="2è6"><p></p></td>
+                        <td id="2è7"><p></p></td>
+                        <td id="2è8"><p></p></td>
                     </tr>
                 </table>
             </td>
@@ -141,68 +82,137 @@
             <td>
                 <table>
                     <tr>
-                        <td id="60"><p></p></td>
-                        <td id="61"><p></p></td>
-                        <td id="62"><p></p></td>
+                        <td id="3è0"><p></p></td>
+                        <td id="3è1"><p></p></td>
+                        <td id="3è2"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="70"><p></p></td>
-                        <td id="71"><p></p></td>
-                        <td id="72"><p></p></td>
+                        <td id="4è0"><p></p></td>
+                        <td id="4è1"><p></p></td>
+                        <td id="4è2"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="80"><p></p></td>
-                        <td id="81"><p></p></td>
-                        <td id="82"><p></p></td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <tr>
-                        <td id="63"><p></p></td>
-                        <td id="64"><p></p></td>
-                        <td id="65"><p></p></td>
-                    </tr>
-                    <tr>
-                        <td id="73"><p></p></td>
-                        <td id="74"><p></p></td>
-                        <td id="75"><p></p></td>
-                    </tr>
-                    <tr>
-                        <td id="83"><p></p></td>
-                        <td id="84"><p></p></td>
-                        <td id="85"><p></p></td>
+                        <td id="5è0"><p></p></td>
+                        <td id="5è1"><p></p></td>
+                        <td id="5è2"><p></p></td>
                     </tr>
                 </table>
             </td>
             <td>
                 <table>
                     <tr>
-                        <td id="66"><p></p></td>
-                        <td id="67"><p></p></td>
-                        <td id="68"><p></p></td>
+                        <td id="3è3"><p></p></td>
+                        <td id="3è4"><p></p></td>
+                        <td id="3è5"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="76"><p></p></td>
-                        <td id="77"><p></p></td>
-                        <td id="78"><p></p></td>
+                        <td id="4è3"><p></p></td>
+                        <td id="4è4"><p></p></td>
+                        <td id="4è5"><p></p></td>
                     </tr>
                     <tr>
-                        <td id="86"><p></p></td>
-                        <td id="87"><p></p></td>
-                        <td id="88"><p></p></td>
+                        <td id="5è3"><p></p></td>
+                        <td id="5è4"><p></p></td>
+                        <td id="5è5"><p></p></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td id="3è6"><p></p></td>
+                        <td id="3è7"><p></p></td>
+                        <td id="3è8"><p></p></td>
+                    </tr>
+                    <tr>
+                        <td id="4è6"><p></p></td>
+                        <td id="4è7"><p></p></td>
+                        <td id="4è8"><p></p></td>
+                    </tr>
+                    <tr>
+                        <td id="5è6"><p></p></td>
+                        <td id="5è7"><p></p></td>
+                        <td id="5è8"><p></p></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td id="6è0"><p></p></td>
+                        <td id="6è1"><p></p></td>
+                        <td id="6è2"><p></p></td>
+                    </tr>
+                    <tr>
+                        <td id="7è0"><p></p></td>
+                        <td id="7è1"><p></p></td>
+                        <td id="7è2"><p></p></td>
+                    </tr>
+                    <tr>
+                        <td id="8è0"><p></p></td>
+                        <td id="8è1"><p></p></td>
+                        <td id="8è2"><p></p></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td id="6è3"><p></p></td>
+                        <td id="6è4"><p></p></td>
+                        <td id="6è5"><p></p></td>
+                    </tr>
+                    <tr>
+                        <td id="7è3"><p></p></td>
+                        <td id="7è4"><p></p></td>
+                        <td id="7è5"><p></p></td>
+                    </tr>
+                    <tr>
+                        <td id="8è3"><p></p></td>
+                        <td id="8è4"><p></p></td>
+                        <td id="8è5"><p></p></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td id="6è6"><p></p></td>
+                        <td id="6è7"><p></p></td>
+                        <td id="6è8"><p></p></td>
+                    </tr>
+                    <tr>
+                        <td id="7è6"><p></p></td>
+                        <td id="7è7"><p></p></td>
+                        <td id="7è8"><p></p></td>
+                    </tr>
+                    <tr>
+                        <td id="8è6"><p></p></td>
+                        <td id="8è7"><p></p></td>
+                        <td id="8è8"><p></p></td>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
+    <div id="numbers">
+        <p class="numbers" id="1">1</p>
+        <p class="numbers" id="2">2</p>
+        <p class="numbers" id="3">3</p>
+        <p class="numbers" id="4">4</p>
+        <p class="numbers" id="5">5</p>
+        <p class="numbers" id="6">6</p>
+        <p class="numbers" id="7">7</p>
+        <p class="numbers" id="8">8</p>
+        <p class="numbers" id="9">9</p>
+    </div>
     <footer id="footer3x3"><a href="mode.html">Back</a>
-    <a href="#" class="next">New puzzle</a></footer>
 
 </div>
 <script type="text/javascript" src="assets/js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="assets/js/sudokuCalls.js"></script>
-<!--<script type="text/javascript" src="assets/js/javascript.js"></script>-->
+<script type="text/javascript" src="assets/js/javascript.js"></script>
 </body>
 </html>
