@@ -6,7 +6,8 @@ and (max-width: 568px) {
     }
     #container {
         width: 70%;
-        height: 568px;
+        height: 100%;
+        text-align: center;
     }
     a {
         display: block;
@@ -19,9 +20,6 @@ and (max-width: 568px) {
     }
     #table3x3 {
         margin-bottom: 20px;
-    }
-    #table3x3{
-
     }
     #table3x2 {
         margin-top: 50px;
@@ -37,11 +35,15 @@ and (max-width: 568px) {
     button {
         margin-bottom: 20px;
     }
+    #numbers {
+        width: 220px;
+        margin:0 auto 0 auto;
+    }
     #numbers p {
         color: black;
     }
-    #nav {
-
+    #footer3x3 {
+        margin-top: -10px;
     }
 
 }

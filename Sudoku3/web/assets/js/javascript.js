@@ -34,6 +34,10 @@ var setName = function (e) {
     document.cookie = "UserName="+ user ;
 };
 
+var addNum = function (){
+
+};
+
 $(document).ready(function () {
     getName();
     $('#UserInput').on('submit',setName);
