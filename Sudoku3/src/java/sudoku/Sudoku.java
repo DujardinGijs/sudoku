@@ -13,8 +13,7 @@ import java.util.Random;
 public class Sudoku {
 
     public static void main(String[] args) {
-        Sudoku s = new Sudoku();
- 
+       
     }
 
     /*private int[][] solution = new int[9][9];*/
@@ -53,19 +52,22 @@ public class Sudoku {
 
 
     public int setNumber(int x, int y, int number) {
-        if (number == solution[x][y])
+        
+        if (!sudokuState[x][y])
         {
-            sudokuState[x][y] = true;
+        
+            sudokuState[x][y] = number == solution[x][y];
+        
+            if (0 <= number && number <= 9)
+            {
+                sudoku[x][y] = number; 
+                return number;
+            }     
+            else
+            {
+                return 0;
+            }
         }
-        else
-        {
-            sudokuState[x][y] = false;
-        }
-        if (0 <= number && number <= 9)
-        {
-           sudoku[x][y] = number; 
-           return number;
-        }     
         else
         {
             return 0;
@@ -73,20 +75,28 @@ public class Sudoku {
     }
 
     public int getNumberFromSudoku(int x, int y) {
+        if ((0 <= x  && x < 9) && (0 <= y && y < 9))
+        {
         return sudoku[x][y];
+        }
+        else
+        {
+            return 0;
+        }
     }
     
     public int getNumberFromSolution(int x, int y)
     {
+        if ((0 <= x && x < 9) && (0 <= y && y < 9))
+        {
         return solution[x][y];
+        }
+        else
+        {
+            return 0;
+        }
     }
-    
-    public int[][] getSudoku()
-    {
-        return sudoku;
-    }
-    
-    
+        
     public String[] getHint()
     {
         Random nr = new Random();
@@ -120,6 +130,9 @@ public class Sudoku {
 
     public boolean solve(int row, int col) {
 
+        row = 0;
+        col = 0;
+         
         if (row == sudoku.length) {
 
             return true;

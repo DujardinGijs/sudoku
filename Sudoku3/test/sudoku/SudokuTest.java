@@ -37,110 +37,90 @@ public class SudokuTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of main method, of class Sudoku.
-     */
-    @org.junit.Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Sudoku.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setNumber method, of class Sudoku.
-     */
     @org.junit.Test
     public void testSetNumber() {
-        System.out.println("setNumber");
         int x = 0;
         int y = 0;
-        int number = 0;
+        int number = 2;
+        Sudoku instance = new Sudoku();
+        int expResult = 2;
+        int result = instance.setNumber(x, y, number);
+        assertEquals(expResult, result);
+    }
+    
+    @org.junit.Test
+    public void testSetWrongNumber() {
+        int x = 0;
+        int y = 0;
+        int number = 10;
         Sudoku instance = new Sudoku();
         int expResult = 0;
         int result = instance.setNumber(x, y, number);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    @org.junit.Test
+    public void testSetFixedNumber() {
+        int x = 0;
+        int y = 1;
+        int number = 10;
+        Sudoku instance = new Sudoku();
+        int expResult = 0;
+        int result = instance.setNumber(x, y, number);
+        assertEquals(expResult, result);
     }
 
-    /**
-     * Test of getNumberFromSudoku method, of class Sudoku.
-     */
     @org.junit.Test
     public void testGetNumberFromSudoku() {
-        System.out.println("getNumberFromSudoku");
+
         int x = 0;
-        int y = 0;
+        int y = 1;
+        Sudoku instance = new Sudoku();
+        int expResult = 1;
+        int result = instance.getNumberFromSudoku(x, y);
+        assertEquals(expResult, result);
+
+    }
+    
+    @org.junit.Test
+    public void testGetNumberFromSudokuOutOfBounds() {
+        int x = 9;
+        int y = 1;
         Sudoku instance = new Sudoku();
         int expResult = 0;
         int result = instance.getNumberFromSudoku(x, y);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        x = 5;
+        y = 50;
+        expResult = 0;
+        result = instance.getNumberFromSudoku(x, y);
+        assertEquals(expResult, result);
+
     }
 
-    /**
-     * Test of getNumberFromSolution method, of class Sudoku.
-     */
     @org.junit.Test
     public void testGetNumberFromSolution() {
-        System.out.println("getNumberFromSolution");
-        int x = 0;
-        int y = 0;
+        int x = 5;
+        int y = 8;
+        Sudoku instance = new Sudoku();
+        int expResult = 5;
+        int result = instance.getNumberFromSolution(x, y);
+        assertEquals(expResult, result);
+
+    }
+
+    
+    @org.junit.Test
+    public void testGetNumberFromSolutionOutOfBounds() {
+        int x = 36;
+        int y = 2;
         Sudoku instance = new Sudoku();
         int expResult = 0;
         int result = instance.getNumberFromSolution(x, y);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of getSudoku method, of class Sudoku.
-     */
-    @org.junit.Test
-    public void testGetSudoku() {
-        System.out.println("getSudoku");
-        Sudoku instance = new Sudoku();
-        int[][] expResult = null;
-        int[][] result = instance.getSudoku();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    }    
 
-    /**
-     * Test of getHint method, of class Sudoku.
-     */
-    @org.junit.Test
-    public void testGetHint() {
-        System.out.println("getHint");
-        Sudoku instance = new Sudoku();
-        String[] expResult = null;
-        String[] result = instance.getHint();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of solve method, of class Sudoku.
-     */
-    @org.junit.Test
-    public void testSolve() {
-        System.out.println("solve");
-        int row = 0;
-        int col = 0;
-        Sudoku instance = new Sudoku();
-        boolean expResult = false;
-        boolean result = instance.solve(row, col);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     
 }
