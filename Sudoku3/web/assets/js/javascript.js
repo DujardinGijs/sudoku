@@ -29,7 +29,7 @@ var getName = function () {
 
 var setName = function (e) {
     e.preventdefault;
-    var user = $("#username").val();
+    var user = $("#userName").val();
     document.cookie = "UserName="+ user ;
 };
 
