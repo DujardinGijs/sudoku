@@ -24,12 +24,14 @@ var getName = function () {
     var cookie =  document.cookie;
     var preset = "UserName=";
     var user = cookie.slice(preset.length);
+    alert(cookie);
     $("#users").append(user);
 };
 
 var setName = function (e) {
     e.preventdefault;
-    var user = $("#username").val();
+    var user = $("#userName").val();
+    alert(user);
     document.cookie = "UserName="+ user ;
 };
 
