@@ -27,7 +27,7 @@ public class Bridge extends HttpServlet {
     
         private Sudoku theActualSudoku = new Sudoku();
         
-        private JsonObject compute(String mode){
+        private JsonObject sendHint(String mode){
 
             String[] hint = theActualSudoku.getHint();
             if ( hint[0].equals("Solved"))
@@ -48,7 +48,7 @@ public class Bridge extends HttpServlet {
             
         };
        
-        private JsonObject compute(String coordx, String coordy)
+        private JsonObject sendNumber(String coordx, String coordy)
         {
             int x = Integer.parseInt(coordx);
             int y = Integer.parseInt(coordy);
@@ -63,7 +63,7 @@ public class Bridge extends HttpServlet {
                     .build();
         };
         
-        private JsonObject compute(String coordx, String coordy, String number)
+        private JsonObject setNumber(String coordx, String coordy, String number)
         {
             int x = Integer.parseInt(coordx);
             int y = Integer.parseInt(coordy);
@@ -79,7 +79,7 @@ public class Bridge extends HttpServlet {
                     .build();
         };
         
-        private JsonObject compute(String coordx, String coordy, int placeholder)
+        private JsonObject checkSudoku(String coordx, String coordy)
         {
             int x = Integer.parseInt(coordx);
             int y = Integer.parseInt(coordy);
@@ -120,27 +120,25 @@ public class Bridge extends HttpServlet {
             String y = request.getParameter("y");
             String nr = request.getParameter("nr");
             
-            int placeholder = 0;
-            
             switch (mode)
                 {
                 case ("HINT"):
-                    JsonObject jsonHint = compute(mode);
+                    JsonObject jsonHint = sendHint(mode);
                     out.println(jsonHint);
                     break;
                     
                 case ("GET"):
-                    JsonObject jsonGet = compute(x,y);
+                    JsonObject jsonGet = sendNumber(x,y);
                     out.println(jsonGet);
                     break;
                     
                 case ("SET"):
-                    JsonObject JsonSet = compute(x,y,nr);
+                    JsonObject JsonSet = setNumber(x,y,nr);
                     out.println(JsonSet);
                     break;
                     
                 case ("CHECK"):
-                    JsonObject JsonCheck = compute(x,y,placeholder);
+                    JsonObject JsonCheck = checkSudoku(x,y);
                     out.println(JsonCheck);
                     break;
                     
