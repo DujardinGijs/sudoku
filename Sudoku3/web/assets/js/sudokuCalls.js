@@ -94,11 +94,44 @@ var checkPuzzle = function() {
     
 };
 
+var addNum = function (){
+    if(!($(".selected p").attr("class") == "fixed"))
+    {
+        var id = $(".selected").attr("id");
+        var idsplit = id.split("è");
+        var x = idsplit[0];
+        var y = idsplit[1];
+    
+        
+        var object = {};
+            object.mode = "SET";
+            object.x = x;
+            object.y = y;
+            object.nr = $(this).attr("id");
+        
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/Sudoku/API/",
+            data: object,
+            dataType: "json"
 
+        }).done(function (data, textstatus, jqXHR) {
+            
+            $(".selected p").text(data.nr);            
+             
+        }).fail(function (jqXHR, textstatus, errorThrown) {
+
+        });
+        
+        
+    }
+    
+};
 
 $(document).ready(function () {
     console.log("running");
     $(".hint").on('click', getHint);
     $(".check").on('click', checkPuzzle);
+    $(".numbers").on('click', addNum);
     loadNewPuzzle();
 });

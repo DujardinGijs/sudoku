@@ -29,43 +29,10 @@ var getName = function () {
 
 var setName = function (e) {
     e.preventdefault;
-    var user = $("#userName").val();
+    var user = $("#username").val();
     document.cookie = "UserName="+ user ;
 };
 
-var addNum = function (){
-    if(!($(".selected p").attr("class") == "fixed"))
-    {
-        var id = $(".selected").attr("id");
-        var idsplit = id.split("è");
-        var x = idsplit[0];
-        var y = idsplit[1];
-    
-        
-        var object = {};
-            object.mode = "SET";
-            object.x = x;
-            object.y = y;
-            object.nr = $(this).attr("id");
-        
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/Sudoku/API/",
-            data: object,
-            dataType: "json"
-
-        }).done(function (data, textstatus, jqXHR) {
-            
-            $(".selected p").text(data.nr);            
-             
-        }).fail(function (jqXHR, textstatus, errorThrown) {
-
-        });
-        
-        
-    }
-    
-};
 
 var selected = function ()
 {
@@ -80,6 +47,5 @@ $(document).ready(function () {
     $('#UserInput').on('submit',setName);
     $(".counter").on('click', tel);
     $("#table3x3").on('click', "td td", selected);
-    $(".numbers").on('click', addNum);
 
 });
