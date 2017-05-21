@@ -1,5 +1,8 @@
+var hint = false;
 var getHint = function() {
-        
+        if (hint){alert("vul eerst getal in aub")}
+        else{
+            hint = true;
             $.ajax({
             type: "GET",
             url: "http://localhost:8080/Sudoku/API/?mode=HINT",
@@ -11,7 +14,7 @@ var getHint = function() {
               
         }).fail(function (jqXHR, textstatus, errorThrown) {
 
-        });
+        });}
 };
 
 var loadNewPuzzle = function() {
@@ -95,6 +98,7 @@ var checkPuzzle = function() {
 };
 
 var addNum = function (){
+    hint = false;
     if(!($(".selected p").attr("class") == "fixed"))
     {
         var id = $(".selected").attr("id");
@@ -129,6 +133,7 @@ var addNum = function (){
 };
 
 $(document).ready(function () {
+    
     console.log("running");
     $(".hint").on('click', getHint);
     $(".check").on('click', checkPuzzle);
